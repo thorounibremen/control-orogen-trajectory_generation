@@ -79,8 +79,9 @@ void jointState2RmlTypes(const base::samples::Joints& joint_state, const std::ve
         try{
             const base::JointState &state = joint_state.getElementByName(names[i]);
             if(!state.hasPosition()){
-                LOG_ERROR("Element %s of joint state does not have a valid position entry", names[i].c_str());
-                throw std::invalid_argument("Invalid joint state");
+                state.Position(0.0);
+                //LOG_ERROR("Element %s of joint state does not have a valid position entry", names[i].c_str());
+                //throw std::invalid_argument("Invalid joint state");
             }
 #ifdef USING_REFLEXXES_TYPE_IV
             if(flags.PositionalLimitsBehavior == POSITIONAL_LIMITS_ACTIVELY_PREVENT ||
